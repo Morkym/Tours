@@ -1,1 +1,4 @@
 @import "tailwindcss";
+.gallery-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

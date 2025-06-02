@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import abtus from '../assets/Aboutus/abtus.jpg';
 gsap.registerPlugin(ScrollTrigger);
 
 export function AboutUsSection() {
@@ -40,7 +41,7 @@ export function AboutUsSection() {
       <div className="w-full md:w-1/2 text-center md:text-left">
         <h2 className="text-4xl font-bold mb-6">About Us</h2>
         <img
-          src="/about-image.jpg"
+          src={abtus}
           alt="About Tutembee Safaris"
           className="rounded-xl shadow-xl w-full max-w-md mx-auto md:mx-0"
         />

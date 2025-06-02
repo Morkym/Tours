@@ -7,6 +7,7 @@ import { Pricing } from './Components/Pricing'
 import Gallery from './Components/Gallery'
 import Contact from './Components/Contact'
 import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
 function App() {
   return (
    <div className='bg-[#C5E188] bg-fixed text-gray-800'>
@@ -17,6 +18,7 @@ function App() {
     <DestinationsSection/>
     <Pricing />
     <Contact />
+    <Footer />
    </div>
 
   )
