@@ -31,7 +31,7 @@ function App() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: section,
-              start: 'top 90%',
+              start: 'top 85%',
               end: 'bottom 60%',
               toggleActions: 'play none none reverse',
             },
