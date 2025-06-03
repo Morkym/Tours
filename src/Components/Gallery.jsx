@@ -26,6 +26,9 @@ export default function GallerySection() {
   const cardRefs = useRef([]);
 
   useGSAP(() => {
+    // Disable animations on mobile (less than 640px width)
+    if (window.innerWidth < 640) return;
+
     cardRefs.current.forEach((card) => {
       if (card) {
         gsap.fromTo(

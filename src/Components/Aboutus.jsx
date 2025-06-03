@@ -1,4 +1,3 @@
-// AboutUsSection.jsx
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,6 +9,9 @@ export function AboutUsSection() {
   const paragraphRef = useRef(null);
 
   useEffect(() => {
+    // Disable animations on mobile devices (width < 640px)
+    if (window.innerWidth < 640) return;
+
     gsap.fromTo(
       paragraphRef.current,
       {
@@ -62,4 +64,5 @@ export function AboutUsSection() {
     </section>
   );
 }
+
 export default AboutUsSection;
