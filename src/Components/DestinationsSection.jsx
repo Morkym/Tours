@@ -46,30 +46,11 @@ export function DestinationsSection() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const cards = gsap.utils.toArray(".destination-card");
+    const isMobile = window.innerWidth <= 640;
 
-    if (window.innerWidth <= 640) {
-      // Mobile animation - smooth slide from right + fade in
-      cards.forEach((card, i) => {
-        gsap.fromTo(
-          card,
-          { x: 20, opacity: 0 }, // reduced x to avoid overflow
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
-            },
-            delay: i * 0.15,
-          }
-        );
-      });
-    } else {
-      // Desktop animation - scale + fade
+    if (!isMobile) {
+      const cards = gsap.utils.toArray(".destination-card");
+
       cards.forEach((card) => {
         gsap.fromTo(
           card,
