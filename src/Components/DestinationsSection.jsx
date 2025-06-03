@@ -8,35 +8,35 @@ const destinations = [
   {
     id: 1,
     title: "Masai Mara",
-    image: "/masai-mara.jpg",
+    image: "/destinations/mara.jpg",
     description:
       "Masai Mara offers an unforgettable safari experience. Witness the Great Migration and spot the Big Five in their natural habitat. It's the ultimate destination for nature and wildlife lovers.",
   },
   {
     id: 2,
     title: "Diani Beach",
-    image: "/diani.jpg",
+    image: "/destinations/diani.jpg",
     description:
       "Diani Beach is a paradise of soft white sands and crystal-clear waters. Ideal for both relaxation and adventure, you can snorkel, kite-surf, or simply enjoy the serene coastal breeze. It's the perfect tropical escape.",
   },
   {
     id: 3,
     title: "Mount Kenya",
-    image: "/mount-kenya.jpg",
+    image: "/destinations/mt-kenya.jpg",
     description:
       "Mount Kenya is Africa’s second-highest peak, offering breathtaking views and thrilling hikes. Explore its glaciers, alpine meadows, and rich biodiversity. It's a top destination for trekkers and nature enthusiasts.",
   },
   {
     id: 4,
     title: "Lamu",
-    image: "/lamu.jpg",
+    image: "/destinations/lamu.jpg",
     description:
       "Lamu is a UNESCO World Heritage site rich in Swahili culture and charm. Walk through narrow streets filled with centuries-old architecture and dhow boats. It's a peaceful and culturally immersive experience.",
   },
   {
     id: 5,
     title: "Fort Jesus",
-    image: "/fort-jesus.jpg",
+    image: "/destinations/fort-jesus.jpg",
     description:
       "Fort Jesus in Mombasa stands as a symbol of Kenya's colonial and Swahili history. The fort’s architecture tells stories of Portuguese, Arab, and British rule. Explore museums and coastal heritage at this iconic landmark.",
   },
@@ -48,23 +48,46 @@ export function DestinationsSection() {
   useEffect(() => {
     const cards = gsap.utils.toArray(".destination-card");
 
-    cards.forEach((card) => {
-      gsap.fromTo(
-        card,
-        { scale: 0.95, opacity: 0.8 },
-        {
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            scrub: true,
-          },
-          scale: 1,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-    });
+    if (window.innerWidth <= 640) {
+      // Mobile animation - smooth slide from right + fade in
+      cards.forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          { x: 50, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            delay: i * 0.15,
+          }
+        );
+      });
+    } else {
+      // Desktop animation - scale + fade
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { scale: 0.95, opacity: 0.8 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom",
+              scrub: true,
+            },
+          }
+        );
+      });
+    }
   }, []);
 
   return (

@@ -40,13 +40,13 @@ export default function ContactSection() {
       style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
       id="contact"
     >
-      <h2 className="text-4xl font-bold text-center mb-10 text-white drop-shadow-lg">Contact Us</h2>
+      <h2 className="text-4xl font-bold text-center mb-10 text-black drop-shadow-lg">Contact Us</h2>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Contact Info */}
         <div className="flex flex-col justify-between text-white drop-shadow-lg">
           <div className="space-y-4 text-lg  text-black">
-            <p><strong>Phone:</strong> +254 712 345 678</p>
+            <p><strong>Phone:</strong> +254 740 969749 </p>
             <p><strong>Email:</strong> info@tutembee.co.ke</p>
             <p><strong>Location:</strong> Nairobi, Kenya</p>
           </div>
@@ -55,7 +55,10 @@ export default function ContactSection() {
             <a href="#" aria-label="Facebook"><FaFacebook /></a>
             <a href="#" aria-label="Twitter"><FaTwitter /></a>
             <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
+            <a href="https://wa.me/254740969749?text=Hello%2C%20I%20am%20interested%20in%20your%20travel%20services!"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"><FaWhatsapp /></a>
           </div>
         </div>
 
@@ -63,27 +66,27 @@ export default function ContactSection() {
         <form
           ref={formRef}
           onSubmit={sendEmail}
-          className="contact-form space-y-4 bg-green-200 bg-opacity-90 p-6 rounded-xl shadow-md"
+          className="contact-form space-y-4 bg-[url('/form/lion.jpg')] bg-cover  bg-opacity-0 p-6 rounded-xl shadow-md"
         >
           <input
             type="text"
             name="user_name"
             placeholder="Full Name"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
             required
           />
           <input
             type="email"
             name="user_email"
             placeholder="Email"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
             required
           />
           <textarea
             name="message"
             rows="5"
             placeholder="Your Message"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
             required
           ></textarea>
           <button
