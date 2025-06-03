@@ -19,9 +19,10 @@ function App() {
       <Navbar />
       <Hero />
       <Aboutus />
+      <Gallery />
       <DestinationsSection />
       <Pricing />
-      <Gallery />
+      
       <Contact />
       <Footer />
       
