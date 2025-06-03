@@ -49,27 +49,26 @@ export function DestinationsSection() {
     const cards = gsap.utils.toArray(".destination-card");
 
     if (window.innerWidth <= 640) {
-      // Mobile animation - smooth slide from right + fade in
+      // Mobile animation: slide in from right (no opacity to avoid stuck state)
       cards.forEach((card, i) => {
         gsap.fromTo(
           card,
-          { x: 50, opacity: 0 },
+          { x: 50 },
           {
             x: 0,
-            opacity: 1,
-            duration: 1,
+            duration: 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: card,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
+              start: "top bottom",
+              toggleActions: "play none none none",
             },
-            delay: i * 0.15,
+            delay: i * 0.1,
           }
         );
       });
     } else {
-      // Desktop animation - scale + fade
+      // Desktop animation: scale and fade
       cards.forEach((card) => {
         gsap.fromTo(
           card,
@@ -101,7 +100,7 @@ export function DestinationsSection() {
         {destinations.map((dest) => (
           <div
             key={dest.id}
-            className="destination-card rounded-xl shadow-lg bg-cover bg-center h-96 relative overflow-hidden"
+            className="destination-card rounded-xl shadow-lg bg-cover bg-center h-96 relative overflow-hidden opacity-100"
             style={{ backgroundImage: `url(${dest.image})` }}
           >
             {/* Title Overlay */}
