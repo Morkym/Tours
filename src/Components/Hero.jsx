@@ -63,7 +63,7 @@ export default function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="h-screen relative bg-[url('./assets/tour.svg')] bg-cover bg-center md:bg-fixed text-white text-center overflow-hidden"
+      className="h-screen relative bg-[url('/tours.jpg')] bg-cover bg-center md:bg-fixed text-white text-center overflow-hidden"
     >
       <h1
         ref={titleRef}
