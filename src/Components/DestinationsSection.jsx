@@ -49,26 +49,27 @@ export function DestinationsSection() {
     const cards = gsap.utils.toArray(".destination-card");
 
     if (window.innerWidth <= 640) {
-      // Mobile animation: slide in from right (no opacity to avoid stuck state)
+      // Mobile animation - smooth slide from right + fade in
       cards.forEach((card, i) => {
         gsap.fromTo(
           card,
-          { x: 50 },
+          { x: 20, opacity: 0 }, // reduced x to avoid overflow
           {
             x: 0,
-            duration: 0.8,
+            opacity: 1,
+            duration: 1,
             ease: "power2.out",
             scrollTrigger: {
               trigger: card,
-              start: "top bottom",
-              toggleActions: "play none none none",
+              start: "top 90%",
+              toggleActions: "play none none reverse",
             },
-            delay: i * 0.1,
+            delay: i * 0.15,
           }
         );
       });
     } else {
-      // Desktop animation: scale and fade
+      // Desktop animation - scale + fade
       cards.forEach((card) => {
         gsap.fromTo(
           card,
@@ -90,17 +91,17 @@ export function DestinationsSection() {
   }, []);
 
   return (
-    <section className="py-20 px-6 bg-[#C5E188]" id="destinations">
+    <section className="py-20 px-6 bg-[#C5E188] overflow-hidden" id="destinations">
       <h2 className="text-4xl font-bold text-center mb-12">Top Destinations</h2>
 
       <div
         ref={containerRef}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 overflow-hidden"
       >
         {destinations.map((dest) => (
           <div
             key={dest.id}
-            className="destination-card rounded-xl shadow-lg bg-cover bg-center h-96 relative overflow-hidden opacity-100"
+            className="destination-card rounded-xl shadow-lg bg-cover bg-center h-96 relative overflow-hidden"
             style={{ backgroundImage: `url(${dest.image})` }}
           >
             {/* Title Overlay */}
