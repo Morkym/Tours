@@ -4,6 +4,11 @@ import gsap from "gsap";
 import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
+// Load EmailJS environment variables
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 export default function ContactSection() {
   const formRef = useRef();
 
@@ -20,18 +25,14 @@ export default function ContactSection() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formRef.current, "YOUR_PUBLIC_KEY")
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          formRef.current.reset();
-        },
-        (error) => {
-          alert("Failed to send message. Try again later.");
-          console.error(error);
-        }
-      );
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        alert("Email sent successfully!");
+        formRef.current.reset();
+      }, (error) => {
+        alert("Failed to send message. Try again later.");
+        console.error(error);
+      });
   };
 
   return (
@@ -45,9 +46,9 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Contact Info */}
         <div className="flex flex-col justify-between text-white drop-shadow-lg">
-          <div className="space-y-4 text-lg  text-black">
-            <p><strong>Phone:</strong> +254 740 969749 </p>
-            <p><strong>Email:</strong> info@tutembee.co.ke</p>
+          <div className="space-y-4 text-lg text-black">
+            <p><strong>Phone:</strong> +254 740 969749</p>
+            <p><strong>Email:</strong> tutembeesafaris@gmail.com</p>
             <p><strong>Location:</strong> Nairobi, Kenya</p>
           </div>
 
@@ -55,10 +56,14 @@ export default function ContactSection() {
             <a href="#" aria-label="Facebook"><FaFacebook /></a>
             <a href="#" aria-label="Twitter"><FaTwitter /></a>
             <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="https://wa.me/254740969749?text=Hello%2C%20I%20am%20interested%20in%20your%20travel%20services!"
+            <a
+              href="https://wa.me/254740969749?text=Hello%2C%20I%20am%20interested%20in%20your%20travel%20services!"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp"><FaWhatsapp /></a>
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
           </div>
         </div>
 
@@ -66,27 +71,27 @@ export default function ContactSection() {
         <form
           ref={formRef}
           onSubmit={sendEmail}
-          className="contact-form space-y-4 bg-[url('/form/lion.jpg')] bg-cover  bg-opacity-0 p-6 rounded-xl shadow-md"
+          className="contact-form space-y-4 bg-[url('/form/lion.jpg')] bg-cover p-6 rounded-xl shadow-md"
         >
           <input
             type="text"
             name="user_name"
             placeholder="Full Name"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white bg-black/40 placeholder-white"
             required
           />
           <input
             type="email"
             name="user_email"
             placeholder="Email"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white bg-black/40 placeholder-white"
             required
           />
           <textarea
             name="message"
             rows="5"
             placeholder="Your Message"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring text-white bg-black/40 placeholder-white"
             required
           ></textarea>
           <button

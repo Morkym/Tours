@@ -16,8 +16,8 @@ export default function Navbar() {
     <nav className="w-full fixed top-0 left-0 bg-transparent  z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-bold text-green-700 logo-font">
-          Tutembee
+        <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
+          <img src="/tutembee.jpg" alt="logo" />
         </div>
 
         {/* Desktop Nav */}

@@ -3,20 +3,20 @@ import { useRef } from "react";
 const pricingPlans = [
   {
     title: "Budget",
-    price: "$199",
+    price: "KSHS 12,500",
     features: ["Basic accommodations", "2 destinations", "Group transport"],
     backgroundImage: "/packbg/sky.png", // Update with your actual image path
   },
   {
     title: "Standard",
-    price: "$399",
+  price: "KSHS 25,000",
     features: ["Mid-range hotels", "4 destinations", "Private guide"],
     highlighted: true,
     backgroundImage: "/packbg/cheetah.jpg",
   },
   {
     title: "Premium",
-    price: "$699",
+    price: "KSHS 50,000",
     features: ["Luxury lodges", "All-inclusive", "VIP support"],
     backgroundImage: "/packbg/watamu.jpg",
   },
